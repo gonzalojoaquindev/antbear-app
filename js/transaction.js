@@ -122,3 +122,5 @@ clear.addEventListener("click", function () {
   amount.innerHTML = amount.innerHTML.slice(0, -1);
   inputAmount.textContent = `${operator.innerHTML} ${amount.innerHTML} CLP`;
 });
+
+console.log("ahora le agregue un mensaje en la consola");
