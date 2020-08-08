@@ -2,7 +2,7 @@
   padding: 5px;
   display: grid;
   grid-template-columns: 1fr 3fr 3fr;
-  grid-gap: 5px;
+  grid-gap: 1px;
 }
 
 .r-icon {
@@ -13,9 +13,25 @@
 .r-icon a {
   border-radius: 50%;
   width: 40px;
-  padding: 0 auto;
 }
 
-.r-category {
-  font-weight: 500px;
+.r-category,
+.r-amount {
+  font-weight: 800px;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.r-account,
+.r-total,
+.r-date,
+.r-tag,
+.r-benefited {
+  color: gray;
+}
+
+.r-amount,
+.r-total,
+.r-date {
+  text-align: right;
 }

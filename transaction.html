@@ -68,7 +68,7 @@
         <div id="display" class="display">
           <div class="row display valign-wrapper">
             <div class="col s2 operator" id="operator">-</div>
-            <div class="col s7 amount" id="amount"></div>
+            <div class="col s7 amount" id="amount-trans"></div>
             <div class="col s3 coin">CLP</div>
           </div>
         </div>
@@ -116,7 +116,7 @@
 
       <!--menú para ingresar detalles del registro-->
       <div id="detail" class="detail col s12 grey darken-4 grey-text text-lighten-1">
-        <div id="show-amount" class="grey-text text-lighten-1 flow-text center-align"></div>
+        <div id="amount-detail" class="grey-text text-lighten-1 flow-text center-align"></div>
         <input value="0" name="amount" type="number" id="input-amount">
 
 
@@ -135,6 +135,8 @@
             <input type="text" name="time" class="timepicker grey-text text-lighten-1" id="time">
           </div>
         </div>
+
+
 
         <!--Entrada de beneficiado-->
         <div class="benefited">
@@ -157,7 +159,7 @@
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">textsms</i>
-                  <input type="text" name="note" id="note" class="autocomplete grey-text text-lighten-1">
+                  <input value="" type="text" name="note" id="note" class="autocomplete grey-text text-lighten-1">
                   <label for="note">Notas</label>
                 </div>
               </div>

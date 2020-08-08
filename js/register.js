@@ -1,4 +1,4 @@
-const myContent = document.getElementById('my-content')
+const myContent = document.getElementById("my-content");
 
 //leer en firebase
 
@@ -7,12 +7,12 @@ db.collection("register")
   .then((querySnapshot) => {
     const container = document.createElement("div");
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().amount}`)
+      console.log(`${doc.id} => ${doc.data().amount}`);
       const newRegister = `
           <div class="divider"></div> 
           <div class="register section grey lighten-5" >
           <div class="r-icon">
-            <a class="btn-floating btn-large red">
+            <a class="btn-floating  red">
               <i class="material-icons">local_gas_station</i>
             </a>
           </div>
@@ -24,7 +24,7 @@ db.collection("register")
           <div class="r-date">${doc.data().date}</div>
           <div class="r-tag">${doc.data().tag}</div>`;
 
-    container.insertAdjacentHTML("afterbegin", newRegister);
+      container.insertAdjacentHTML("afterbegin", newRegister);
     });
     myContent.appendChild(container);
   });

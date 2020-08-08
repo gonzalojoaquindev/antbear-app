@@ -1,12 +1,10 @@
 "use strict";
 
-const display = document.getElementById("display"),
-  account = document.getElementById("account-category"),
-  keyboard = document.getElementById("keyboard"),
+const keyboard = document.getElementById("keyboard"),
   selector = document.getElementById("selector-trans"),
   operator = document.getElementById("operator"),
-  amount = document.getElementById("amount"),
-  showAmount = document.getElementById("show-amount"),
+  amount = document.getElementById("amount-trans"), //monto en vista de transferencia
+  amountDetail = document.getElementById("amount-Detail"), //monto en vista de detalles
   inputAmount = document.getElementById("input-amount"),
   number = document.querySelectorAll(".number"), // number buttons
   cancel = document.getElementById("cancel"), // cancel button
@@ -14,6 +12,9 @@ const display = document.getElementById("display"),
   clear = document.getElementById("clear"), //botón borrar
   type = document.querySelectorAll(".type"),
   formulary = document.getElementById("formulary"),
+  tiempo = document.getElementById("time"),
+  total = "",
+  tag = "",
   tipo = document.getElementById("tipo");
 let selectorActivo = document.querySelector(".activo");
 
@@ -27,7 +28,12 @@ const save = () => {
     account = formulary.account.value,
     category = formulary.category.value,
     type = formulary.type.value,
-    note = formulary.note.value;
+    note = formulary.note.value,
+    now = new Date(),
+    currentTime = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+
+  tiempo.setAttribute("value", currentTime);
+  console.log(tiempo.value);
 
   db.collection("register")
     .add({
@@ -39,9 +45,11 @@ const save = () => {
       benefited: benefited,
       category: category,
       note: note,
+      total: total,
+      tag: tag,
     })
-    .then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
+    .then(function () {
+      console.log(`New document written in ${now} `);
     })
     .catch(function (error) {
       console.error("Error adding document: ", error);
@@ -52,14 +60,15 @@ formulary.addEventListener("submit", (e) => {
   e.preventDefault();
   var datos = new FormData(formulary);
 
+  /*
+  console.log(time.value);
   console.log(datos.get("amount"));
   console.log(datos.get("account"));
   console.log(datos.get("category"));
   console.log(datos.get("type"));
-  console.log(datos.get("date"));
-  console.log(datos.get("time"));
   console.log(datos.get("benefited"));
   console.log(datos.get("note"));
+  */
 });
 
 tipo.addEventListener("click", (e) => {
@@ -91,14 +100,10 @@ for (let i = 0; i < number.length; i++) {
 
     amount.innerHTML += e.target.innerHTML;
 
-    //Monto en formato moneda(para mostrar en pantalla)
-    const amountMoney = new Intl.NumberFormat("de-DE");
-    console.log(amountMoney.format(amount.innerHTML));
-
     //Para escribir el monto en el menu detalle
     inputAmount.value = amount.innerHTML;
     //Para escribir el monto en el menu de detalle
-    showAmount.textContent = `${operator.innerHTML} ${amount.innerHTML} CLP`;
+    //amountDetail.textContent = `${operator.innerHTML} ${amount.innerHTML} CLP`;
 
     //para bajar el tamaño los números
     if (amount.innerHTML.length < 5) {
