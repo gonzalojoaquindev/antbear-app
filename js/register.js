@@ -18,6 +18,13 @@ db.collection("register")
           </div>
           <div class="r-category">${doc.data().category}</div> 
           <div class="r-amount">${doc.data().amount}</div>
+          <div class="r-cancel">
+            <a class="btn-floating waves-effect waves-light red" onClick="deleteRegister('${
+              doc.id
+            }')">
+              <i class="material-icons">close</i>
+            </a>
+          </div>
           <div class="r-account">${doc.data().account}</div>
           <div class="r-total">${doc.data().total}</div>
           <div class="r-note">${doc.data().note}</div>
@@ -28,6 +35,18 @@ db.collection("register")
     });
     myContent.appendChild(container);
   });
+
+const deleteRegister = (id) => {
+  db.collection("register")
+    .doc(id)
+    .delete()
+    .then(function () {
+      console.log("Document successfully deleted!");
+    })
+    .catch(function (error) {
+      console.error("Error removing document: ", error);
+    });
+};
 
 /*
 //con template string
